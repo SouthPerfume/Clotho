@@ -1,0 +1,11 @@
+/* App.css - 클로토 앱 전역 스타일 */
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+}
+
+.app {
+  width: 100%;
+  min-height: 100vh;
+}
