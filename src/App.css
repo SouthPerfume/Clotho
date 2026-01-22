@@ -8,4 +8,76 @@
 .app {
   width: 100%;
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 메인 네비게이션 */
+.main-nav {
+  display: flex;
+  gap: 0.5rem;
+  padding: 1rem;
+  background: white;
+  border-bottom: 1px solid #e0e0e0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.nav-button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background: transparent;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #666;
+  transition: all 0.2s ease;
+}
+
+.nav-button:hover {
+  background: #f5f5f5;
+  color: #333;
+}
+
+.nav-button.active {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.nav-icon {
+  font-size: 1.25rem;
+}
+
+.nav-label {
+  font-weight: 600;
+}
+
+/* 메인 콘텐츠 */
+.main-content {
+  flex: 1;
+  overflow-y: auto;
+}
+
+/* 반응형 */
+@media (max-width: 768px) {
+  .main-nav {
+    padding: 0.75rem;
+  }
+
+  .nav-button {
+    flex: 1;
+    justify-content: center;
+    padding: 0.75rem 1rem;
+  }
+
+  .nav-label {
+    display: none;
+  }
+
+  .nav-icon {
+    font-size: 1.5rem;
+  }
 }
