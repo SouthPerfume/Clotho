@@ -40,27 +40,56 @@ function NewEntry() {
       return;
     }
 
+    const savedContent = content;
+
+    // 즉시 UI 업데이트 (낙관적 업데이트)
+    setContent('');
     setIsSaving(true);
 
+    // 임시 엔트리를 목록에 추가
+    const tempEntry = {
+      id: `temp-${Date.now()}`,
+      content: savedContent,
+      timestamp: new Date(),
+      analysis: {
+        primaryCategory: '분석중',
+        subCategory: '...',
+        category: '...',
+        keywords: ['분석중'],
+        sentiment: '중립',
+        emotionScore: 0
+      },
+      isAnalyzing: true
+    };
+
+    setRecentEntries(prev => [tempEntry, ...prev.slice(0, 2)]);
+
     try {
-      // 1. AI 분석
-      console.log('AI 분석 중...');
-      const analysis = await analyzeEntry(content);
-      console.log('분석 결과:', analysis);
+      // 백그라운드에서 AI 분석 + Firebase 저장
+      console.log('🚀 백그라운드 분석 시작...');
+      const analysis = await analyzeEntry(savedContent);
+      console.log('✅ 분석 완료:', analysis);
 
-      // 2. Firebase에 저장
-      console.log('저장 중...');
-      const savedEntry = await saveEntry(TEMP_USER_ID, content, analysis);
-      console.log('저장 완료:', savedEntry);
+      const savedEntry = await saveEntry(TEMP_USER_ID, savedContent, analysis);
+      console.log('💾 저장 완료:', savedEntry);
 
-      // 3. UI 업데이트
-      alert(`저장되었습니다!\n\n카테고리: ${analysis.category}\n감정: ${analysis.sentiment}\n키워드: ${analysis.keywords.join(', ')}`);
-      setContent('');
+      // 임시 엔트리를 실제 엔트리로 교체
+      setRecentEntries(prev =>
+        prev.map(entry =>
+          entry.id === tempEntry.id ? savedEntry : entry
+        )
+      );
 
-      // 4. 최근 기록 새로고침
-      await loadRecentEntries();
+      // 성공 토스트 (alert 대신 조용하게)
+      console.log(`✨ 저장 완료! 카테고리: ${analysis.category}, 감정: ${analysis.sentiment}`);
+
     } catch (error) {
-      console.error('Error saving entry:', error);
+      console.error('❌ 저장 실패:', error);
+
+      // 실패 시 롤백
+      setRecentEntries(prev => prev.filter(entry => entry.id !== tempEntry.id));
+      setContent(savedContent);
+
       alert('저장 중 오류가 발생했습니다.\n\n' + error.message);
     } finally {
       setIsSaving(false);
