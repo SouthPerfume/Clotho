@@ -20,19 +20,50 @@
   padding: 1rem 2rem;
   background: var(--color-black);
   border-bottom: none;
+  position: relative;
+}
+
+.menu-button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  color: white;
+}
+
+.menu-icon {
+  font-size: 1.5rem;
+  color: white;
+}
+
+.app-logo {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Brush Script MT', cursive;
+  font-size: 1.8rem;
+  font-weight: 400;
+  color: white;
+  margin: 0;
+  font-style: italic;
+}
+
+.nav-buttons {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
 }
 
 .nav-button {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.5rem 1rem;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
   background: transparent;
   border: none;
-  border-radius: 20px;
+  border-radius: 50%;
   cursor: pointer;
-  font-size: 0.9rem;
-  font-weight: 500;
   color: rgba(255, 255, 255, 0.7);
   transition: all 0.2s ease;
 }
@@ -43,16 +74,12 @@
 }
 
 .nav-button.active {
-  background: var(--color-olive);
+  background: white;
   color: var(--color-black);
 }
 
 .nav-icon {
-  font-size: 1.1rem;
-}
-
-.nav-label {
-  font-weight: 500;
+  font-size: 1.2rem;
 }
 
 /* 메인 콘텐츠 */

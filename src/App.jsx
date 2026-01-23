@@ -11,20 +11,29 @@ function App() {
     <div className="app">
       {/* 네비게이션 바 */}
       <nav className="main-nav">
-        <button
-          className={`nav-button ${currentPage === 'entry' ? 'active' : ''}`}
-          onClick={() => setCurrentPage('entry')}
-        >
-          <span className="nav-icon">📝</span>
-          <span className="nav-label">새 기록</span>
+        <button className="menu-button">
+          <span className="menu-icon">☰</span>
         </button>
-        <button
-          className={`nav-button ${currentPage === 'dashboard' ? 'active' : ''}`}
-          onClick={() => setCurrentPage('dashboard')}
-        >
-          <span className="nav-icon">📊</span>
-          <span className="nav-label">대시보드</span>
-        </button>
+
+        <h1 className="app-logo">Clotho</h1>
+
+        <div className="nav-buttons">
+          <button
+            className={`nav-button ${currentPage === 'entry' ? 'active' : ''}`}
+            onClick={() => setCurrentPage('entry')}
+          >
+            <span className="nav-icon">📝</span>
+          </button>
+          <button
+            className={`nav-button ${currentPage === 'dashboard' ? 'active' : ''}`}
+            onClick={() => setCurrentPage('dashboard')}
+          >
+            <span className="nav-icon">⊞</span>
+          </button>
+          <button className="nav-button">
+            <span className="nav-icon">✎</span>
+          </button>
+        </div>
       </nav>
 
       {/* 페이지 콘텐츠 */}
