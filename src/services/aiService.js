@@ -255,7 +255,7 @@ export const analyzeEntry = async (content, userId = 'temp_user_001') => {
     console.log('✅ API Key found. Calling Gemini API...');
 
     const model = genAI.getGenerativeModel({
-      model: 'gemini-3-flash-preview', // 최신 Gemini 3 Flash (Pro급 성능, Flash급 속도)
+      model: 'gemini-2.0-flash-exp', // 최신 Gemini 2.0 Flash 실험 버전
       generationConfig: {
         temperature: 0.4, // 꿈 해석 같은 창의적 분석을 위해 적당히 상향
         topK: 40,
