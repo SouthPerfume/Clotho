@@ -1,24 +1,24 @@
-/* 클로토 글로벌 스타일 - 노션 스타일 미니멀 */
+/* 클로토 글로벌 스타일 - 미니멀 모던 */
 
 :root {
-  /* 파스텔 컬러 팔레트 */
-  --color-primary: #6B7FD7;
-  --color-secondary: #B4A7D6;
-  --color-nyx: #A8C5DA; /* 꿈 - 파란 파스텔 */
-  --color-apollo: #FFB6A3; /* 운동 - 주황 파스텔 */
-  --color-venus: #FFD4E5; /* 감정 - 핑크 파스텔 */
+  /* 메인 컬러 */
+  --color-black: #1A1A1A;
+  --color-cream: #F5F3EE;
+  --color-beige: #E8E4DC;
+  --color-olive: #B8B494;
+  --color-dark-olive: #8B8767;
 
   /* 중성 컬러 */
-  --color-bg: #FFFFFF;
-  --color-bg-secondary: #F7F7F5;
-  --color-text-primary: #37352F;
-  --color-text-secondary: #787774;
-  --color-border: #E9E9E7;
+  --color-bg: #F5F3EE;
+  --color-bg-secondary: #FFFFFF;
+  --color-text-primary: #1A1A1A;
+  --color-text-secondary: #6B6B6B;
+  --color-border: #D4D0C8;
 
   /* 그림자 */
-  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
-  --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.08);
-  --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.12);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 4px 16px rgba(0, 0, 0, 0.1);
 
   /* 간격 */
   --spacing-xs: 4px;

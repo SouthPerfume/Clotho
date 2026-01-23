@@ -1,97 +1,95 @@
 .dashboard-page {
   min-height: 100vh;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: var(--color-bg);
   padding: 2rem;
 }
 
 .dashboard-container {
-  max-width: 1400px;
+  max-width: 1200px;
   margin: 0 auto;
 }
 
 .dashboard-header {
-  text-align: center;
   margin-bottom: 2rem;
 }
 
 .dashboard-title {
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: white;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
   margin: 0 0 0.5rem 0;
 }
 
 .dashboard-subtitle {
-  font-size: 1.125rem;
-  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.9rem;
+  color: var(--color-text-secondary);
   margin: 0;
 }
 
 /* 탭 네비게이션 */
 .dashboard-tabs {
   display: flex;
-  gap: 1rem;
+  gap: 0.5rem;
   margin-bottom: 2rem;
-  background: rgba(255, 255, 255, 0.1);
+  background: white;
   padding: 0.5rem;
-  border-radius: 12px;
-  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  border: 1px solid var(--color-border);
 }
 
 .dashboard-tab {
   flex: 1;
   display: flex;
-  flex-direction: column;
   align-items: center;
+  justify-content: center;
   gap: 0.5rem;
-  padding: 1rem;
+  padding: 0.7rem 1rem;
   background: transparent;
-  border: 2px solid transparent;
-  border-radius: 8px;
+  border: none;
+  border-radius: 16px;
   cursor: pointer;
-  transition: all 0.3s ease;
-  color: rgba(255, 255, 255, 0.7);
-  font-size: 0.875rem;
+  transition: all 0.2s ease;
+  color: var(--color-text-secondary);
+  font-size: 0.85rem;
   font-weight: 500;
 }
 
 .dashboard-tab:hover {
-  background: rgba(255, 255, 255, 0.1);
-  color: white;
+  background: var(--color-beige);
+  color: var(--color-text-primary);
 }
 
 .dashboard-tab.active {
-  background: white;
-  color: #667eea;
-  border-color: white;
+  background: var(--color-black);
+  color: white;
 }
 
 .tab-icon {
-  font-size: 1.5rem;
+  font-size: 1.1rem;
 }
 
 .tab-label {
-  font-size: 0.9rem;
-  font-weight: 600;
+  font-size: 0.85rem;
+  font-weight: 500;
 }
 
 /* 콘텐츠 영역 */
 .dashboard-content {
   background: white;
-  border-radius: 16px;
+  border-radius: 20px;
+  border: 1px solid var(--color-border);
   padding: 2rem;
   min-height: 500px;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
 }
 
 .tab-content {
-  animation: fadeIn 0.3s ease;
+  animation: fadeIn 0.25s ease;
 }
 
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(10px);
+    transform: translateY(8px);
   }
   to {
     opacity: 1;
@@ -105,11 +103,12 @@
   align-items: center;
   justify-content: center;
   min-height: 400px;
-  border: 2px dashed #e0e0e0;
-  border-radius: 12px;
-  color: #999;
-  font-size: 1.125rem;
+  border: 2px dashed var(--color-border);
+  border-radius: 16px;
+  color: var(--color-text-secondary);
+  font-size: 1rem;
   font-weight: 500;
+  background: var(--color-bg);
 }
 
 /* 반응형 */
@@ -119,16 +118,22 @@
   }
 
   .dashboard-title {
-    font-size: 2rem;
+    font-size: 1.3rem;
   }
 
   .dashboard-tabs {
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
   }
 
   .dashboard-tab {
-    flex: 1 1 calc(50% - 0.5rem);
-    min-width: 140px;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+
+  .tab-label {
+    font-size: 0.75rem;
   }
 
   .dashboard-content {
