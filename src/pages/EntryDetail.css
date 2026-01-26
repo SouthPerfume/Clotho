@@ -236,8 +236,8 @@
 
 .keyword-pill {
   padding: var(--spacing-sm) var(--spacing-md);
-  background-color: var(--color-primary);
-  color: white;
+  background-color: var(--color-olive);
+  color: var(--color-text-primary);
   border-radius: 20px;
   font-size: 0.875rem;
   font-weight: 500;

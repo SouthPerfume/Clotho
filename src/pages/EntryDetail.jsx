@@ -221,13 +221,13 @@ function EntryDetail({ entry, onClose, onUpdate }) {
             </div>
 
             {/* 키워드 */}
-            {((isEditing && editedKeywords) || (!isEditing && entry.analysis.keywords && entry.analysis.keywords.length > 0)) && (
-              <div className="analysis-section">
-                <h4>키워드</h4>
-                {isEditing ? (
-                  <div className="keywords-edit-container">
-                    <div className="keywords-grid">
-                      {editedKeywords.map((keyword, idx) => (
+            <div className="analysis-section">
+              <h4>키워드</h4>
+              {isEditing ? (
+                <div className="keywords-edit-container">
+                  <div className="keywords-grid">
+                    {editedKeywords && editedKeywords.length > 0 ? (
+                      editedKeywords.map((keyword, idx) => (
                         <span key={idx} className="keyword-pill editable">
                           {keyword}
                           <button
@@ -237,30 +237,36 @@ function EntryDetail({ entry, onClose, onUpdate }) {
                             ✕
                           </button>
                         </span>
-                      ))}
-                    </div>
-                    <div className="add-keyword-input">
-                      <input
-                        type="text"
-                        value={newKeyword}
-                        onChange={(e) => setNewKeyword(e.target.value)}
-                        onKeyDown={handleKeywordKeyDown}
-                        placeholder="새 키워드 입력 (Enter로 추가)"
-                      />
-                      <button onClick={handleAddKeyword}>추가</button>
-                    </div>
+                      ))
+                    ) : (
+                      <p style={{ color: '#999', fontSize: '0.875rem' }}>키워드가 없습니다</p>
+                    )}
                   </div>
-                ) : (
-                  <div className="keywords-grid">
-                    {entry.analysis.keywords.map((keyword, idx) => (
+                  <div className="add-keyword-input">
+                    <input
+                      type="text"
+                      value={newKeyword}
+                      onChange={(e) => setNewKeyword(e.target.value)}
+                      onKeyDown={handleKeywordKeyDown}
+                      placeholder="새 키워드 입력 (Enter로 추가)"
+                    />
+                    <button onClick={handleAddKeyword}>추가</button>
+                  </div>
+                </div>
+              ) : (
+                <div className="keywords-grid">
+                  {entry.analysis.keywords && entry.analysis.keywords.length > 0 ? (
+                    entry.analysis.keywords.map((keyword, idx) => (
                       <span key={idx} className="keyword-pill">
                         {keyword}
                       </span>
-                    ))}
-                  </div>
-                )}
-              </div>
-            )}
+                    ))
+                  ) : (
+                    <p style={{ color: '#999', fontSize: '0.875rem' }}>키워드가 없습니다</p>
+                  )}
+                </div>
+              )}
+            </div>
 
             {/* 감정 점수 */}
             {entry.analysis.emotionScore !== undefined && (
